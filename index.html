@@ -19,17 +19,32 @@
 <div class="stage" id="stage">
 
 <!-- =================================================================== 1 -->
-<section class="slide cover">
-  <div class="eyebrow">Recolección de Datos · Universidad de La Sabana · 2026-2</div>
-  <h1>¿Por qué <span>capamos</span><br>clase?</h1>
-  <p class="sub">Factores, frecuencia y percepciones del ausentismo voluntario en estudiantes universitarios</p>
-  <div class="meta">
-    <div>Integrantes<b><span class="todo">[COMPLETAR nombres]</span></b></div>
-    <div>Grupo / NRC<b><span class="todo">[COMPLETAR]</span></b></div>
-    <div>Docente<b><span class="todo">[COMPLETAR]</span></b></div>
+<section class="slide cover-v2">
+  <div class="cover-top">
+    <span class="brand"><i></i>Universidad de La Sabana</span>
+    <span>Recolección de Datos · 2026-2</span>
   </div>
-  <div class="cover-dots" id="coverDots" aria-hidden="true"></div>
-  <aside class="speaker">Presentar al grupo y el tema. La cuadrícula de la derecha son los 56 encuestados: los azules son los 36 que capan clase al menos ocasionalmente.</aside>
+  <div class="cover-grid">
+    <div class="cover-left">
+      <div class="eyebrow-pill">Proyecto de investigación · Encuesta a estudiantes</div>
+      <h1>¿Por qué<br><span>capamos</span> clase?</h1>
+      <p class="sub">Factores, frecuencia y percepciones del ausentismo voluntario en estudiantes de la Universidad de La Sabana</p>
+      <div class="team">
+        <div class="member"><span class="av">DP</span>Daniel Pallares</div>
+        <div class="member"><span class="av">TE</span>Tomás Espitia</div>
+        <div class="member"><span class="av">LT</span>Laura Torres</div>
+        <div class="member"><span class="av">SA</span>Sofía Arbeláez</div>
+      </div>
+      <div class="teacher">Docente <b>Yenny Paola Sierra Bonill</b></div>
+    </div>
+    <div class="cover-card">
+      <div class="cover-dots" id="coverDots" aria-hidden="true"></div>
+      <div class="cc-num">36 <small>de 56</small></div>
+      <div class="cc-lbl">encuestados capan clase al menos una vez al mes</div>
+      <div class="cc-legend"><span><i class="on"></i>Capan clase</span><span><i></i>Nunca o casi nunca</span></div>
+    </div>
+  </div>
+  <aside class="speaker">Presentar al grupo y el tema. Cada cuadro de la derecha es uno de los 56 encuestados: los azules son los 36 que capan clase al menos ocasionalmente.</aside>
 </section>
 
 <!-- =================================================================== 2 -->
@@ -58,13 +73,13 @@
   <h2>Faltar a clase “porque sí” es común… pero casi no se mide</h2>
   <div class="split">
     <div class="stack">
-      <p class="reveal">El <strong>ausentismo voluntario</strong> (“capar clase”) es la decisión de no asistir sin una causa de fuerza mayor. Se asocia con menor rendimiento y con deserción <span class="todo">[cita]</span>, y en la universidad se volvió más fácil con el material virtual disponible.</p>
+      <p class="reveal">El <strong>ausentismo voluntario</strong> (“capar clase”) es la decisión de no asistir sin una causa de fuerza mayor. La asistencia es uno de los mejores predictores de las notas (Credé et al., 2010; Kassarnig et al., 2017), y tener las clases grabadas puede reducirla (Edwards &amp; Clinton, 2019).</p>
       <p class="reveal">En la Universidad de La Sabana <strong>no existe un dato público</strong> sobre cuánto, cuándo y por qué los estudiantes deciden faltar. Sin ese dato, las decisiones sobre asistencia obligatoria o metodologías se toman a ciegas.</p>
       <p class="reveal">Por eso hace falta <strong>recolectar datos primarios</strong> directamente de los estudiantes.</p>
-      <div class="takeaway reveal"><span class="todo">[COMPLETAR con 1–2 cifras de fuentes citadas, p. ej. estudios sobre asistencia y rendimiento o datos de deserción del MEN/SPADIES]</span></div>
+      <div class="takeaway reveal small">En la Universidad de Panamá, el <strong>76 %</strong> de los estudiantes de Medicina reportó ausentismo voluntario (Bravo et al., 2018). En Colombia, la deserción anual universitaria fue de <strong>8.65 %</strong> en 2024 (MEN, SPADIES).</div>
     </div>
     <div class="stack">
-      <div class="card reveal"><h3>¿Quiénes?</h3><p>Estudiantes de la Universidad de La Sabana</p></div>
+      <div class="card reveal"><h3>¿Quiénes?</h3><p>Estudiantes de la Universidad de La Sabana: 13 913 matriculados (9 665 de pregrado y 4 248 de posgrado)</p></div>
       <div class="card reveal"><h3>¿Dónde?</h3><p>Campus Puente del Común, Chía (Cundinamarca)</p></div>
       <div class="card reveal"><h3>¿Cuándo?</h3><p>Periodo académico 2026-2 · recolección del 10 al 24 de septiembre</p></div>
     </div>
@@ -143,26 +158,26 @@
 <section class="slide">
   <div class="kicker">Técnica de muestreo <span class="crit">Criterio 6 · 15 %</span></div>
   <h2>Muestreo no probabilístico y sus límites</h2>
-  <div class="split-r">
+  <div class="split-r" style="grid-template-columns:minmax(0,1.1fr) 1fr">
     <div class="stack">
       <div class="card accent reveal">
-        <h3>Técnica: no probabilístico por conveniencia <span class="todo">[¿bola de nieve?]</span></h3>
+        <h3>Técnica: no probabilístico por conveniencia</h3>
         <p>El enlace se compartió en grupos de estudiantes; responde quien quiere. Se eligió porque no tenemos acceso a un listado oficial de estudiantes para sortear.</p>
       </div>
-      <div class="formula reveal">
-        n = <span class="frac"><span>Z² · p · q</span><span>e²</span></span>
-        = <span class="frac"><span>1.96² · 0.5 · 0.5</span><span>0.05²</span></span> ≈ <strong>385</strong>
+      <div class="formula reveal" style="font-size:19px">
+        n = <span class="frac"><span>N · Z² · p · q</span><span>e² (N − 1) + Z² · p · q</span></span>
+        = <span class="frac"><span>13 913 · 1.96² · 0.25</span><span>0.05² · 13 912 + 1.96² · 0.25</span></span> ≈ <strong>374</strong>
       </div>
-      <p class="small reveal">Con <strong>95 %</strong> de confianza, <strong>p = 0.5</strong> (máxima varianza) y <strong>5 %</strong> de error se necesitarían 385 respuestas. Con <strong>n = 56</strong>, el margen equivalente sería de <strong class="hl-2">±13.1 %</strong>.</p>
+      <p class="small reveal">Con <strong>N = 13 913</strong> estudiantes, <strong>95 %</strong> de confianza, <strong>p = 0.5</strong> (máxima varianza) y <strong>5 %</strong> de error se necesitarían 374 respuestas. Con <strong>n = 56</strong>, el margen equivalente sería de <strong class="hl-2">±13.1 %</strong>.</p>
       <div class="takeaway warn reveal small">Como el muestreo no es probabilístico, <strong>los resultados describen a los 56 encuestados</strong> y no se pueden generalizar a toda la universidad.</div>
     </div>
     <div class="card chart-card reveal">
       <div class="chart-title">Margen de error según el tamaño de muestra</div>
-      <div class="chart-sub">Si el muestreo fuera aleatorio simple (95 % de confianza, p = 0.5)</div>
+      <div class="chart-sub">Si el muestreo fuera aleatorio simple (N = 13 913, 95 % de confianza, p = 0.5)</div>
       <div class="chart-box"><canvas id="c-error"></canvas></div>
     </div>
   </div>
-  <aside class="speaker">Nombrar la técnica y justificarla. Mostrar la fórmula con sus parámetros. Reconocer el límite: con 56 respuestas y sin aleatoriedad no se puede generalizar. Si se conoce el N de estudiantes, aplicar la corrección para población finita.</aside>
+  <aside class="speaker">Nombrar la técnica y justificarla. Mostrar la fórmula con sus parámetros. Reconocer el límite: con 56 respuestas y sin aleatoriedad no se puede generalizar. La población (13 913 estudiantes en 2026-1) viene de La Sabana en cifras; con ese N se aplicó la corrección para población finita.</aside>
 </section>
 
 <!-- =================================================================== 8 -->
@@ -171,9 +186,9 @@
   <h2>De la población objetivo a las 56 respuestas analizadas</h2>
   <div class="split-r">
     <div class="funnel">
-      <div class="lvl l1 reveal"><b>Población objetivo</b><span>Estudiantes matriculados en la U. Sabana, 2026-2 · N = <span class="todo">[COMPLETAR]</span></span></div>
+      <div class="lvl l1 reveal"><b>Población objetivo</b><span>Estudiantes matriculados en la U. Sabana · N = 13 913 (2026-1)</span></div>
       <div class="arrow">▼</div>
-      <div class="lvl l2 reveal"><b>Marco muestral</b><span>Grupos de estudiantes a los que se envió el enlace <span class="todo">[cuáles y cuántos]</span></span></div>
+      <div class="lvl l2 reveal"><b>Marco muestral</b><span>Contactos y grupos de estudiantes a los que se envió el enlace (no hay un listado formal)</span></div>
       <div class="arrow">▼</div>
       <div class="lvl l3 reveal"><b>Muestra: 56 respuestas</b><span>10–24 de septiembre de 2026</span></div>
       <div class="arrow">▼</div>
@@ -407,7 +422,7 @@
     <div class="stack center">
       <div class="card kpi accent reveal"><div class="num">59<small>%</small></div><div class="lbl">duermen o descansan</div></div>
       <div class="card kpi reveal"><div class="num">46<small>%</small></div><div class="lbl">adelantan tareas o estudian para otra materia</div></div>
-      <div class="takeaway reveal small">Coincide con los motivos: <strong>descanso</strong> y <strong>carga académica</strong> explican la mayoría de las ausencias. El entretenimiento queda de último (21 %).</div>
+      <div class="takeaway reveal small">Coincide con los motivos: <strong>descanso</strong> y <strong>carga académica</strong> explican la mayoría de las ausencias. El entretenimiento queda de último (21 %). Bravo et al. (2018) encontraron el mismo patrón: <strong>estudiar y dormir</strong>.</div>
     </div>
   </div>
   <aside class="speaker">Faltar a una clase muchas veces es una forma de recuperar sueño o tiempo para otras materias, no de “ir de fiesta”.</aside>
@@ -503,7 +518,7 @@
     <div class="stack center">
       <div class="card kpi accent reveal"><div class="num">57<small>%</small></div><div class="lbl">eligió 3: el material virtual <strong>no cambia</strong> su decisión</div></div>
       <div class="card kpi reveal"><div class="num">3.04</div><div class="lbl">media de la escala: prácticamente neutral</div></div>
-      <p class="small reveal">Los extremos se compensan: 10 dicen que el material los hace faltar <strong>menos</strong> y 14 que los hace faltar <strong>más</strong>.</p>
+      <p class="small reveal">Los extremos se compensan: 10 dicen que el material los hace faltar <strong>menos</strong> y 14 que los hace faltar <strong>más</strong>. En cambio, Edwards y Clinton (2019) sí midieron una caída en la asistencia al grabar las clases.</p>
     </div>
   </div>
   <aside class="speaker">Aunque el 39 % dice que capa materias que se aprenden solas con diapositivas, tener el material disponible no aumenta de forma general la probabilidad de faltar.</aside>
@@ -542,7 +557,7 @@
       <h3>Recomendaciones</h3>
       <ul class="clean">
         <li><p>Pedir a Registro un <strong>listado oficial</strong> para hacer un muestreo estratificado por facultad.</p></li>
-        <li><p>Aspirar a <strong>n ≈ 385</strong> para tener ±5 % de error.</p></li>
+        <li><p>Aspirar a <strong>n ≈ 374</strong> para tener ±5 % de error.</p></li>
         <li><p>Agregar <strong>validación de respuesta</strong> en Forms: rango del promedio, “Otros” no vacío y doble programa distinto del programa base.</p></li>
         <li><p>Hacer una <strong>prueba piloto</strong> antes de lanzar la encuesta.</p></li>
       </ul>
@@ -555,12 +570,22 @@
 <section class="slide">
   <div class="kicker">Bibliografía <span class="crit">Criterio 10 · 6 %</span></div>
   <h2>Referencias (APA 7.ª edición)</h2>
-  <ul class="refs reveal">
+  <ul class="refs refs-2 reveal">
+    <li>Bravo, H., Barrios, M., Barraza, E., &amp; Arrocha, D. (2018). Factores asociados al ausentismo voluntario y su relación con el rendimiento académico en estudiantes de medicina de la Universidad de Panamá. <em>Revista Médico Científica, 31</em>, 1–15.</li>
+    <li>Caraballo, F. (2019). Elementos determinantes en el fenómeno de la deserción estudiantil y el ausentismo en la educación superior en Colombia. <em>Revista Experiencia Docente, 6</em>(2), 27–35.</li>
+    <li>Congreso de la República de Colombia. (2012). <em>Ley Estatutaria 1581 de 2012, por la cual se dictan disposiciones generales para la protección de datos personales</em>. Diario Oficial No. 48.587.</li>
     <li>Credé, M., Roch, S. G., &amp; Kieszczynka, U. M. (2010). Class attendance in college: A meta-analytic review of the relationship of class attendance with grades and student characteristics. <em>Review of Educational Research, 80</em>(2), 272–295. https://doi.org/10.3102/0034654310362998</li>
+    <li>Edwards, M. R., &amp; Clinton, M. E. (2019). A study exploring the impact of lecture capture availability and lecture capture usage on student attendance and attainment. <em>Higher Education, 77</em>(3), 403–421. https://doi.org/10.1007/s10734-018-0275-9</li>
+    <li>Hernández-Sampieri, R., &amp; Mendoza, C. P. (2018). <em>Metodología de la investigación: Las rutas cuantitativa, cualitativa y mixta</em>. McGraw-Hill Education.</li>
+    <li>Kassarnig, V., Bjerre-Nielsen, A., Mones, E., Lehmann, S., &amp; Lassen, D. D. (2017). Class attendance, peer similarity, and academic performance in a large field study. <em>PLOS ONE, 12</em>(11), e0187078. https://doi.org/10.1371/journal.pone.0187078</li>
+    <li>Lukkarinen, A., Koivukangas, P., &amp; Seppälä, T. (2016). Relationship between class attendance and student performance. <em>Procedia – Social and Behavioral Sciences, 228</em>, 341–347. https://doi.org/10.1016/j.sbspro.2016.07.051</li>
+    <li>Ministerio de Educación Nacional. (s. f.). <em>Estadísticas de deserción – SPADIES</em>. Recuperado el 30 de septiembre de 2026, de https://www.mineducacion.gov.co/sistemasinfo/spadies/secciones/Estadisticas-de-desercion/</li>
+    <li>Moores, E., Birdi, G. K., &amp; Higson, H. E. (2019). Determinants of university students’ attendance. <em>Educational Research, 61</em>(4), 371–387. https://doi.org/10.1080/00131881.2019.1660587</li>
+    <li>Pérez Riquelme, C. G., &amp; Troncoso Andersen, C. (2022). Absentismo de los estudiantes universitarios en modalidad de clases online. Estudio del caso en dos carreras de la Universidad de Concepción, Chile. <em>Estudios Pedagógicos, 48</em>(3), 243–253.</li>
     <li>Romer, D. (1993). Do students go to class? Should they? <em>Journal of Economic Perspectives, 7</em>(3), 167–174. https://doi.org/10.1257/jep.7.3.167</li>
-    <li><span class="todo">[COMPLETAR: mínimo 8 fuentes académicas, la mayoría de los últimos 10 años: artículos indexados, libros de metodología (p. ej. Hernández-Sampieri), informes oficiales (MEN, SPADIES, DANE)]</span></li>
+    <li>Universidad de La Sabana. (2026). <em>La Sabana en cifras</em>. https://www.unisabana.edu.co/la-sabana-en-cifras</li>
   </ul>
-  <aside class="speaker">Verificar que todas las referencias del documento escrito estén aquí y en formato APA 7.</aside>
+  <aside class="speaker">13 fuentes: 10 académicas (8 de los últimos 10 años) y 3 oficiales o institucionales (MEN, Ley 1581 de 2012 y La Sabana en cifras).</aside>
 </section>
 
 <!-- =================================================================== 26 -->
@@ -569,7 +594,7 @@
   <h1>¿Preguntas?</h1>
   <p class="sub">Código, base limpia, codebook y gráficas en el repositorio del proyecto.</p>
   <div class="meta">
-    <div>Repositorio<b><span class="todo">[github.com/usuario/repositorio]</span></b></div>
+    <div>Repositorio<b>github.com/danielpaya/recolexion_expo</b></div>
     <div>Análisis<b>analisis/analisis.py</b></div>
     <div>Datos<b>data/encuesta_limpia.csv</b></div>
   </div>

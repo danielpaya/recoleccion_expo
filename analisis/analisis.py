@@ -31,6 +31,10 @@ SALIDA_DATA = RAIZ / "data"
 SALIDA_JS = RAIZ / "js" / "data.js"
 SALIDA_PNG = RAIZ / "graficas"
 
+# Población: estudiantes matriculados en la U. de La Sabana, periodo 2026-1
+# (9 665 pregrado + 4 248 posgrado). Fuente: unisabana.edu.co/la-sabana-en-cifras
+POBLACION_N = 13913
+
 # --------------------------------------------------------------------------
 # Opciones del instrumento (texto exacto del formulario)
 # --------------------------------------------------------------------------
@@ -258,15 +262,18 @@ def main():
 
     mv = limpio["material_virtual"].value_counts().reindex([1, 2, 3, 4, 5], fill_value=0)
 
-    # Margen de error con n=56 (p=0.5, 95 %)
-    z = 1.96
-    e = z * np.sqrt(0.25 / n)
-    n_5 = int(np.ceil(z**2 * 0.25 / 0.05**2))
+    # Margen de error con n=56 (p=0.5, 95 %) con corrección por población finita
+    z, N = 1.96, POBLACION_N
+    fpc = np.sqrt((N - n) / (N - 1))
+    e = z * np.sqrt(0.25 / n) * fpc
+    n_0 = z**2 * 0.25 / 0.05**2
+    n_5 = int(np.ceil(N * n_0 / (n_0 + N - 1)))
 
     data = {
         "n": n,
         "fechas": {"inicio": limpio["fecha"].min()[:10], "fin": limpio["fecha"].max()[:10]},
-        "muestreo": {"z": z, "p": 0.5, "error_logrado": round(100 * e, 1), "n_para_5": n_5},
+        "muestreo": {"z": z, "p": 0.5, "N": N, "error_logrado": round(100 * e, 1),
+                     "n_infinita": int(np.ceil(n_0)), "n_para_5": n_5},
         "semestre": {"labels": [f"{s}.°" for s in sem.index], "n": sem.tolist()},
         "facultad": {"labels": fac.index.tolist(), "n": fac.tolist(),
                      "pct": [round(100 * v / n, 1) for v in fac]},

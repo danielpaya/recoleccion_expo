@@ -115,7 +115,8 @@
   const builders = {
     "c-error": () => {
       const pts = [];
-      for (let n = 20; n <= 420; n += 4) pts.push({ x: n, y: 196 * Math.sqrt(0.25 / n) });
+      const N = D.muestreo.N;
+      for (let n = 20; n <= 420; n += 4) pts.push({ x: n, y: 196 * Math.sqrt(0.25 / n) * Math.sqrt((N - n) / (N - 1)) });
       const mark = [
         { x: D.n, y: D.muestreo.error_logrado, lbl: `n = ${D.n} → ±${D.muestreo.error_logrado} %` },
         { x: D.muestreo.n_para_5, y: 5, lbl: `n = ${D.muestreo.n_para_5} → ±5 %` },
@@ -343,7 +344,7 @@
     const box = document.getElementById("coverDots");
     if (!box) return;
     const on = D.capan_alguna_vez.n;
-    box.innerHTML = Array.from({ length: D.n }, (_, i) => `<i class="${i < on ? "on" : ""}"></i>`).join("");
+    box.innerHTML = Array.from({ length: D.n }, (_, i) => `<i class="${i < on ? "on" : ""}" style="--i:${i}"></i>`).join("");
     box.title = `${on} de ${D.n} encuestados capan clase al menos ocasionalmente`;
   }
 
