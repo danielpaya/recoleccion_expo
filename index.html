@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capar clase · Ausentismo voluntario</title>
+  <meta name="description" content="Presentación del proyecto de Recolección de Datos: ausentismo voluntario en estudiantes de la Universidad de La Sabana.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="help" id="help">
+  <kbd>←</kbd> <kbd>→</kbd> navegar · <kbd>F</kbd> pantalla completa · <kbd>N</kbd> notas · <kbd>T</kbd> tema claro/oscuro
+</div>
+
+<div class="viewport">
+<div class="stage" id="stage">
+
+<!-- =================================================================== 1 -->
+<section class="slide cover">
+  <div class="eyebrow">Recolección de Datos · Universidad de La Sabana · 2026-2</div>
+  <h1>¿Por qué <span>capamos</span><br>clase?</h1>
+  <p class="sub">Factores, frecuencia y percepciones del ausentismo voluntario en estudiantes universitarios</p>
+  <div class="meta">
+    <div>Integrantes<b><span class="todo">[COMPLETAR nombres]</span></b></div>
+    <div>Grupo / NRC<b><span class="todo">[COMPLETAR]</span></b></div>
+    <div>Docente<b><span class="todo">[COMPLETAR]</span></b></div>
+  </div>
+  <div class="cover-dots" id="coverDots" aria-hidden="true"></div>
+  <aside class="speaker">Presentar al grupo y el tema. La cuadrícula de la derecha son los 56 encuestados: los azules son los 36 que capan clase al menos ocasionalmente.</aside>
+</section>
+
+<!-- =================================================================== 2 -->
+<section class="slide">
+  <div class="kicker">Ruta de la presentación</div>
+  <h2>Del problema al dato limpio y a los hallazgos</h2>
+  <div class="roadmap">
+    <div class="step reveal"><div class="n">01</div><h3>Problema</h3><p>Planteamiento, pregunta y objetivos</p><div class="w">Criterios 1–4 · 32 %</div></div>
+    <div class="step reveal"><div class="n">02</div><h3>Método</h3><p>Enfoque, variables, muestreo y marco muestral</p><div class="w">Criterios 5–7 · 37 %</div></div>
+    <div class="step reveal"><div class="n">03</div><h3>Instrumento</h3><p>Formulario, codebook y limpieza de la base</p><div class="w">Criterios 8–9 · 25 %</div></div>
+    <div class="step reveal big"><div class="n">04</div><h3>Resultados</h3><p>Frecuencia, motivos, impacto y cruces</p><div class="w">56 respuestas</div></div>
+    <div class="step reveal"><div class="n">05</div><h3>Cierre</h3><p>Conclusiones, limitaciones y referencias</p><div class="w">Criterio 10 · 6 %</div></div>
+  </div>
+  <div class="grid-4" style="margin-top:34px">
+    <div class="card kpi reveal"><div class="num">56</div><div class="lbl">respuestas válidas</div></div>
+    <div class="card kpi reveal"><div class="num">7</div><div class="lbl">facultades representadas</div></div>
+    <div class="card kpi reveal"><div class="num">15</div><div class="lbl">secciones en el formulario, con ramificación por facultad</div></div>
+    <div class="card kpi reveal"><div class="num">10–24</div><div class="lbl">de septiembre de 2026: periodo de recolección</div></div>
+  </div>
+  <aside class="speaker">Mostrar el orden. Los criterios 6 a 9 (muestreo, marco, instrumento y codebook) pesan el 52 % de la nota, así que hay que detenerse ahí.</aside>
+</section>
+
+<!-- =================================================================== 3 -->
+<section class="slide">
+  <div class="kicker">Planteamiento del problema <span class="crit">Criterio 1 · 10 %</span></div>
+  <h2>Faltar a clase “porque sí” es común… pero casi no se mide</h2>
+  <div class="split">
+    <div class="stack">
+      <p class="reveal">El <strong>ausentismo voluntario</strong> (“capar clase”) es la decisión de no asistir sin una causa de fuerza mayor. Se asocia con menor rendimiento y con deserción <span class="todo">[cita]</span>, y en la universidad se volvió más fácil con el material virtual disponible.</p>
+      <p class="reveal">En la Universidad de La Sabana <strong>no existe un dato público</strong> sobre cuánto, cuándo y por qué los estudiantes deciden faltar. Sin ese dato, las decisiones sobre asistencia obligatoria o metodologías se toman a ciegas.</p>
+      <p class="reveal">Por eso hace falta <strong>recolectar datos primarios</strong> directamente de los estudiantes.</p>
+      <div class="takeaway reveal"><span class="todo">[COMPLETAR con 1–2 cifras de fuentes citadas, p. ej. estudios sobre asistencia y rendimiento o datos de deserción del MEN/SPADIES]</span></div>
+    </div>
+    <div class="stack">
+      <div class="card reveal"><h3>¿Quiénes?</h3><p>Estudiantes de la Universidad de La Sabana</p></div>
+      <div class="card reveal"><h3>¿Dónde?</h3><p>Campus Puente del Común, Chía (Cundinamarca)</p></div>
+      <div class="card reveal"><h3>¿Cuándo?</h3><p>Periodo académico 2026-2 · recolección del 10 al 24 de septiembre</p></div>
+    </div>
+  </div>
+  <aside class="speaker">Explicar el problema y su delimitación: población, lugar y tiempo. Completar con las fuentes del documento escrito.</aside>
+</section>
+
+<!-- =================================================================== 4 -->
+<section class="slide">
+  <div class="kicker">Pregunta problema y objetivo general <span class="crit">Criterios 2 y 3 · 14 %</span></div>
+  <h2>Una sola pregunta, respondible con la encuesta</h2>
+  <div class="question reveal"><span class="q-mark">¿</span>Con qué frecuencia faltan voluntariamente a clase los estudiantes de la Universidad de La Sabana en el periodo 2026-2, por qué motivos y cómo perciben su impacto en el rendimiento académico<span class="q-mark">?</span></div>
+  <div class="tags reveal">
+    <span class="pill">Variable: frecuencia de ausentismo</span>
+    <span class="pill">Variable: motivos</span>
+    <span class="pill">Variable: impacto percibido</span>
+    <span class="pill o">Población: estudiantes U. Sabana</span>
+    <span class="pill g">Contexto: periodo 2026-2</span>
+  </div>
+  <div class="card accent reveal" style="margin-top:28px">
+    <div class="kicker" style="margin-bottom:6px">Objetivo general</div>
+    <p style="font-size:21px;color:var(--text-primary)"><strong class="hl">Analizar</strong> los factores determinantes, la frecuencia y las percepciones del ausentismo voluntario en estudiantes de la Universidad de La Sabana durante el periodo académico 2026-2.</p>
+    <p class="small muted" style="margin-top:8px">Qué: factores, frecuencia y percepciones · En quiénes: estudiantes · Dónde: U. Sabana · Cuándo: 2026-2</p>
+  </div>
+  <aside class="speaker">La pregunta incluye variables, población y contexto. El objetivo usa un verbo medible (analizar) y responde directamente a la pregunta.</aside>
+</section>
+
+<!-- =================================================================== 5 -->
+<section class="slide">
+  <div class="kicker">Objetivos específicos <span class="crit">Criterio 4 · 8 %</span></div>
+  <h2>Cuatro pasos que, juntos, cumplen el objetivo general</h2>
+  <div class="body">
+    <div class="obj reveal"><div class="badge">1</div><p><strong>Caracterizar</strong> el perfil académico de los encuestados (semestre, facultad, programa y promedio).</p><div class="stage-lbl">Recolección · secciones 2–14</div></div>
+    <div class="obj reveal"><div class="badge">2</div><p><strong>Estimar</strong> la frecuencia del ausentismo voluntario y los horarios y tipos de asignatura en que se concentra.</p><div class="stage-lbl">Análisis descriptivo</div></div>
+    <div class="obj reveal"><div class="badge">3</div><p><strong>Identificar</strong> los motivos de la inasistencia y el uso que se le da a ese tiempo.</p><div class="stage-lbl">Análisis descriptivo · multirrespuesta</div></div>
+    <div class="obj reveal"><div class="badge">4</div><p><strong>Relacionar</strong> la frecuencia de ausentismo con el promedio y con el impacto percibido, e identificar los factores que la disminuyen.</p><div class="stage-lbl">Análisis de cruces · correlación</div></div>
+  </div>
+  <aside class="speaker">Cada objetivo corresponde a una etapa y a un bloque de preguntas del formulario. Más adelante se muestra qué pregunta responde a cada objetivo.</aside>
+</section>
+
+<!-- =================================================================== 6 -->
+<section class="slide">
+  <div class="kicker">Metodología <span class="crit">Criterio 5 · 10 %</span></div>
+  <h2>Estudio cuantitativo, descriptivo-correlacional y transversal</h2>
+  <div class="grid-3">
+    <div class="card reveal"><span class="pill">Enfoque</span><h3 style="margin-top:10px">Cuantitativo</h3><p>Las respuestas son cerradas y se codifican en números, lo que permite medir frecuencias y proporciones.</p></div>
+    <div class="card reveal"><span class="pill">Alcance</span><h3 style="margin-top:10px">Descriptivo-correlacional</h3><p>Describe el fenómeno y explora la relación entre la frecuencia de ausentismo y el promedio.</p></div>
+    <div class="card reveal"><span class="pill">Diseño</span><h3 style="margin-top:10px">No experimental, transversal</h3><p>Una sola medición (10–24 sep. 2026) sin manipular variables.</p></div>
+  </div>
+  <div class="grid-2" style="margin-top:20px">
+    <div class="card reveal">
+      <h3>Variables principales</h3>
+      <table class="tbl">
+        <tr><th>Variable</th><th>Tipo</th><th>Escala</th></tr>
+        <tr><td>frecuencia</td><td>Categórica</td><td>Ordinal (1–4)</td></tr>
+        <tr><td>promedio</td><td>Numérica continua</td><td>Razón (0–5)</td></tr>
+        <tr><td>motivos, factores</td><td>Dicotómica multirrespuesta</td><td>Nominal (0/1)</td></tr>
+        <tr><td>material_virtual</td><td>Likert</td><td>Ordinal (1–5)</td></tr>
+        <tr><td>facultad, horario</td><td>Categórica</td><td>Nominal</td></tr>
+      </table>
+    </div>
+    <div class="card reveal">
+      <h3>Procedimiento y plan de análisis</h3>
+      <ul class="clean">
+        <li><p>Formulario de Google Forms anónimo, difundido por enlace.</p></li>
+        <li><p>Exportación a CSV y depuración (ver limpieza).</p></li>
+        <li><p>Frecuencias y porcentajes; las preguntas multirrespuesta se separan en variables 0/1.</p></li>
+        <li><p>Cruces y <strong>correlación de Spearman</strong> entre frecuencia y promedio, en Python (pandas).</p></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="speaker">Justificar el enfoque: las preguntas son cerradas y queremos cuantificar. Spearman se usa porque la frecuencia es ordinal.</aside>
+</section>
+
+<!-- =================================================================== 7 -->
+<section class="slide">
+  <div class="kicker">Técnica de muestreo <span class="crit">Criterio 6 · 15 %</span></div>
+  <h2>Muestreo no probabilístico y sus límites</h2>
+  <div class="split-r">
+    <div class="stack">
+      <div class="card accent reveal">
+        <h3>Técnica: no probabilístico por conveniencia <span class="todo">[¿bola de nieve?]</span></h3>
+        <p>El enlace se compartió en grupos de estudiantes; responde quien quiere. Se eligió porque no tenemos acceso a un listado oficial de estudiantes para sortear.</p>
+      </div>
+      <div class="formula reveal">
+        n = <span class="frac"><span>Z² · p · q</span><span>e²</span></span>
+        = <span class="frac"><span>1.96² · 0.5 · 0.5</span><span>0.05²</span></span> ≈ <strong>385</strong>
+      </div>
+      <p class="small reveal">Con <strong>95 %</strong> de confianza, <strong>p = 0.5</strong> (máxima varianza) y <strong>5 %</strong> de error se necesitarían 385 respuestas. Con <strong>n = 56</strong>, el margen equivalente sería de <strong class="hl-2">±13.1 %</strong>.</p>
+      <div class="takeaway warn reveal small">Como el muestreo no es probabilístico, <strong>los resultados describen a los 56 encuestados</strong> y no se pueden generalizar a toda la universidad.</div>
+    </div>
+    <div class="card chart-card reveal">
+      <div class="chart-title">Margen de error según el tamaño de muestra</div>
+      <div class="chart-sub">Si el muestreo fuera aleatorio simple (95 % de confianza, p = 0.5)</div>
+      <div class="chart-box"><canvas id="c-error"></canvas></div>
+    </div>
+  </div>
+  <aside class="speaker">Nombrar la técnica y justificarla. Mostrar la fórmula con sus parámetros. Reconocer el límite: con 56 respuestas y sin aleatoriedad no se puede generalizar. Si se conoce el N de estudiantes, aplicar la corrección para población finita.</aside>
+</section>
+
+<!-- =================================================================== 8 -->
+<section class="slide">
+  <div class="kicker">Marco muestral <span class="crit">Criterio 7 · 12 %</span></div>
+  <h2>De la población objetivo a las 56 respuestas analizadas</h2>
+  <div class="split-r">
+    <div class="funnel">
+      <div class="lvl l1 reveal"><b>Población objetivo</b><span>Estudiantes matriculados en la U. Sabana, 2026-2 · N = <span class="todo">[COMPLETAR]</span></span></div>
+      <div class="arrow">▼</div>
+      <div class="lvl l2 reveal"><b>Marco muestral</b><span>Grupos de estudiantes a los que se envió el enlace <span class="todo">[cuáles y cuántos]</span></span></div>
+      <div class="arrow">▼</div>
+      <div class="lvl l3 reveal"><b>Muestra: 56 respuestas</b><span>10–24 de septiembre de 2026</span></div>
+      <div class="arrow">▼</div>
+      <div class="lvl l4 reveal"><b>56 analizadas</b><span>100 % aceptó el consentimiento</span></div>
+    </div>
+    <div class="stack">
+      <div class="grid-2" style="flex:none">
+        <div class="card reveal"><h3>Unidad de muestreo</h3><p>El estudiante, contactado a través de un grupo de estudiantes.</p></div>
+        <div class="card reveal"><h3>Unidad de análisis</h3><p>El estudiante y su comportamiento de asistencia en el semestre.</p></div>
+      </div>
+      <div class="card accent-2 reveal">
+        <h3>Errores de cobertura</h3>
+        <ul class="clean">
+          <li><p><strong>Sobrecobertura de Ingeniería:</strong> 55 % de la muestra (31 de 56), por la red de contactos del grupo.</p></li>
+          <li><p><strong>Omisiones:</strong> 5 de las 12 facultades no tienen ninguna respuesta (Educación, Cs. de la Vida, Gobierno, Forum, ILFARUS).</p></li>
+          <li><p><strong>Duplicados:</strong> Forms no limitaba a una respuesta por persona. Dos respuestas con la misma marca de tiempo se revisaron y eran distintas, así que se conservaron.</p></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="speaker">Distinguir población, marco, unidad de muestreo y unidad de análisis. Reconocer los problemas de cobertura con evidencia de la propia base.</aside>
+</section>
+
+<!-- =================================================================== 9 -->
+<section class="slide">
+  <div class="kicker">Diseño del instrumento <span class="crit">Criterio 8 · 15 %</span></div>
+  <h2>Formulario de 15 secciones con ramificación por facultad</h2>
+  <div class="flow reveal">
+    <div class="node"><div class="sec">Sección 1</div><h3>Consentimiento informado</h3><p>Propósito, voluntariedad, anonimato y tratamiento de datos. Obligatorio para continuar.</p></div>
+    <div class="link">→</div>
+    <div class="node"><div class="sec">Sección 2</div><h3>Perfil académico</h3><p>Semestre con mayor carga, facultad y promedio acumulado (opcional).</p></div>
+    <div class="link">→</div>
+    <div class="node"><div class="sec">Secciones 3–14</div><h3>Programa base</h3><p>Según la facultad, se muestra solo su lista de programas.</p>
+      <div class="branch"><i>EICEA</i><i>Ingeniería</i><i>Comunicación</i><i>Jurídicas</i><i>Medicina</i><i>Cs. Vida</i><i>Educación</i><i>Filosofía</i><i>Comportamiento</i><i>Gobierno</i><i>Forum</i><i>ILFARUS</i></div></div>
+    <div class="link">→</div>
+    <div class="node main"><div class="sec">Sección 15</div><h3>Ausentismo voluntario</h3><p>Instrucciones (uso de N/A y “Otros”), doble programa y 9 preguntas: frecuencia, motivos, horario, tipo de asignatura, uso del tiempo, impacto académico, impacto psicológico, factores y material virtual.</p></div>
+  </div>
+  <div class="grid-3" style="margin-top:22px">
+    <div class="card reveal"><h3>Opciones exhaustivas</h3><p>Opción <strong>“N/A: No Aplica”</strong> para quien nunca falta y <strong>“Otros”</strong> para lo no previsto.</p></div>
+    <div class="card reveal"><h3>Escala coherente</h3><p>Likert 1–5 con un punto medio explícito: “si no le afecta, seleccione 3”.</p></div>
+    <div class="card reveal"><h3>Prueba piloto</h3><p><span class="todo">[COMPLETAR: a cuántas personas y qué se ajustó]</span></p></div>
+  </div>
+  <aside class="speaker">Recorrer el flujo del formulario. Resaltar que el consentimiento es obligatorio y que la ramificación evita mostrar listas enormes de programas.</aside>
+</section>
+
+<!-- =================================================================== 10 -->
+<section class="slide">
+  <div class="kicker">Diseño del instrumento <span class="crit">Criterio 8 · 15 %</span></div>
+  <h2>Cada pregunta responde a un objetivo… y lo que mejoraríamos</h2>
+  <div class="grid-2" style="align-items:start">
+    <div class="card reveal">
+      <h3>Preguntas por objetivo específico</h3>
+      <table class="tbl">
+        <tr><th>Obj.</th><th>Preguntas del formulario</th></tr>
+        <tr><td>1</td><td>Semestre · facultad · programa base · doble programa · promedio</td></tr>
+        <tr><td>2</td><td>Frecuencia · horario o día · tipo de asignatura</td></tr>
+        <tr><td>3</td><td>Motivo · uso del tiempo al faltar</td></tr>
+        <tr><td>4</td><td>Impacto en el rendimiento · impacto psicológico · factores que disminuyen el deseo de faltar · material virtual</td></tr>
+      </table>
+    </div>
+    <div class="card accent-2 reveal">
+      <h3>Lecciones aprendidas (ajustes para una próxima versión)</h3>
+      <ul class="clean">
+        <li><p><strong>Promedio como texto libre:</strong> permitió un 0.0 y un 5.0 falsos. Se debe validar con un rango numérico.</p></li>
+        <li><p><strong>“Otros” sin validar:</strong> alguien lo marcó dejando solo un espacio.</p></li>
+        <li><p><strong>Doble programa:</strong> no impedía elegir el mismo programa base.</p></li>
+        <li><p><strong>“Motivo principal”</strong> está en singular, pero la pregunta admite varias casillas.</p></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="speaker">Mostrar que cada ítem se deriva de un objetivo. Los ajustes salen directamente de los problemas encontrados en la limpieza: así se ve la conexión entre el instrumento y la calidad del dato.</aside>
+</section>
+
+<!-- =================================================================== 11 -->
+<section class="slide">
+  <div class="kicker">Diccionario de datos (codebook) <span class="crit">Criterio 9 · 10 %</span></div>
+  <h2>Variables con escala, códigos y reglas de validación</h2>
+  <div class="card reveal" style="padding:8px 14px">
+    <table class="tbl compact">
+      <tr><th>Variable</th><th>Etiqueta</th><th>Tipo / escala</th><th>Valores y códigos</th><th>Faltante</th><th>Regla de validación</th></tr>
+      <tr><td>semestre</td><td>Semestre con mayor carga</td><td>Discreta · ordinal</td><td>1–10 (10 = 10 o más)</td><td>—</td><td>Entero 1–10</td></tr>
+      <tr><td>facultad</td><td>Facultad</td><td>Categórica · nominal</td><td>12 facultades</td><td>—</td><td>Obligatoria</td></tr>
+      <tr><td>programa_base</td><td>Programa base</td><td>Categórica · nominal</td><td>Lista por facultad</td><td>—</td><td>Pertenece a la facultad</td></tr>
+      <tr><td>doble_programa</td><td>Segundo programa</td><td>Categórica · nominal</td><td>Lista de pregrados</td><td>Vacío</td><td>≠ programa_base</td></tr>
+      <tr><td>promedio</td><td>Promedio acumulado</td><td>Continua · razón</td><td>0.00–5.00</td><td>NA</td><td>Punto decimal; valores creíbles</td></tr>
+      <tr><td>frecuencia</td><td>Frecuencia de ausentismo</td><td>Categórica · ordinal</td><td>1 Nunca · 2 Ocasional · 3 Frecuente · 4 Muy frecuente</td><td>—</td><td>Una opción</td></tr>
+      <tr><td>mot_1…mot_5</td><td>Motivos de ausencia</td><td>Dicotómica · nominal</td><td>0 = no marcó · 1 = marcó</td><td>N/A → 0</td><td>“Otros” no vacío</td></tr>
+      <tr><td>impacto_rend</td><td>Impacto en el rendimiento</td><td>Categórica · nominal</td><td>4 opciones + N/A</td><td>N/A</td><td>Una opción</td></tr>
+      <tr><td>fac_1…fac_7</td><td>Factores que disminuyen</td><td>Dicotómica · nominal</td><td>0 / 1</td><td>—</td><td>“Otros” no vacío</td></tr>
+      <tr><td>material_virtual</td><td>Efecto del material virtual</td><td>Likert · ordinal</td><td>1 Disminuye mucho … 3 Sin efecto … 5 Aumenta mucho</td><td>—</td><td>Entero 1–5</td></tr>
+    </table>
+  </div>
+  <p class="xs muted reveal" style="margin-top:10px">Extracto. El diccionario completo (18 variables) está en <strong>data/codebook.csv</strong> y la base codificada en <strong>data/encuesta_limpia.csv</strong>.</p>
+  <aside class="speaker">El codebook coincide ítem a ítem con el formulario. Las preguntas de selección múltiple se convierten en una variable 0/1 por opción.</aside>
+</section>
+
+<!-- =================================================================== 12 -->
+<section class="slide">
+  <div class="kicker">Depuración de la base de datos</div>
+  <h2>Seis ajustes antes de analizar: del CSV crudo a la base limpia</h2>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <span class="pill o delta">−2 datos</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <h3>Promedios falsos anulados</h3>
+      <p>Un <strong>0.0</strong> y un <strong>5.0</strong> que no eran reales (una de las personas lo confirmó directamente). Se dejaron como faltantes.</p>
+      <div class="before-after"><span class="b">0.0 · 5.0</span>→<span class="a">NA</span></div>
+    </div>
+    <div class="tl-item reveal">
+      <span class="pill delta">recodificado</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h11M4 12h7M4 17h11M17 10l3 3-3 3"/></svg></div>
+      <h3>“Otros” reubicado</h3>
+      <p>“Para ir a tomar”, escrito en <em>Otros</em>, se pasó a la categoría existente para mantener las opciones mutuamente excluyentes.</p>
+      <div class="before-after"><span class="b">Otros</span>→<span class="a">Ocio o actividades sociales</span></div>
+    </div>
+    <div class="tl-item reveal">
+      <span class="pill o delta">−1 vacío</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M9 12h6"/></svg></div>
+      <h3>“Otros” vacío eliminado</h3>
+      <p>En factores que disminuyen el ausentismo, alguien marcó <em>Otros</em> y dejó solo un espacio. Aparecía como una categoría sin contenido.</p>
+      <div class="before-after"><span class="b">“ ”</span>→<span class="a">sin “Otros”</span></div>
+    </div>
+    <div class="tl-item reveal">
+      <span class="pill delta">duplicado</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></div>
+      <h3>Doble programa repetido</h3>
+      <p>Un estudiante puso Ingeniería Informática como programa base y como doble programa. Se dejó solo el programa base.</p>
+      <div class="before-after"><span class="b">Inf. + Inf.</span>→<span class="a">Inf.</span></div>
+    </div>
+    <div class="tl-item reveal">
+      <span class="pill g delta">12 → 1</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></div>
+      <h3>Columnas consolidadas</h3>
+      <p>Forms crea una columna de “programa base” por facultad (12 en total). Se unieron en <strong>una sola</strong> y se borraron las columnas vacías.</p>
+    </div>
+    <div class="tl-item reveal">
+      <span class="pill g delta">multirrespuesta</span>
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4L19 6"/></svg></div>
+      <h3>Separación en variables 0/1</h3>
+      <p>Las casillas llegan unidas por comas en una celda. Con Python se separan en una variable 0/1 por opción (motivos, asignaturas, actividades y factores).</p>
+    </div>
+  </div>
+  <aside class="speaker">Los cuatro primeros ajustes se hicieron a mano en la hoja de cálculo; los dos últimos los hace el script analisis/analisis.py. Cada ajuste se convirtió en una regla de validación del codebook.</aside>
+</section>
+
+<!-- =================================================================== 13 -->
+<section class="slide">
+  <div class="kicker">Resultados · Perfil de la muestra</div>
+  <h2>Una muestra con mayoría de Ingeniería y de 4.° y 5.° semestre</h2>
+  <div class="grid-4" style="margin-bottom:18px">
+    <div class="card kpi reveal"><div class="num">56</div><div class="lbl">encuestados</div></div>
+    <div class="card kpi reveal"><div class="num">55<small>%</small></div><div class="lbl">de la Facultad de Ingeniería</div></div>
+    <div class="card kpi reveal"><div class="num">4.09</div><div class="lbl">promedio acumulado medio (n = 48; 8 sin dato)</div></div>
+    <div class="card kpi reveal"><div class="num">9</div><div class="lbl">hacen doble programa</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card chart-card reveal"><div class="chart-title">Encuestados por facultad</div><div class="chart-box"><canvas id="c-facultad"></canvas></div></div>
+    <div class="card chart-card reveal"><div class="chart-title">Semestre en el que está la mayor parte de su carga</div><div class="chart-box"><canvas id="c-semestre"></canvas></div></div>
+  </div>
+  <aside class="speaker">Ciencia de Datos (12) e Ingeniería Informática (10) son los programas más frecuentes. La mitad de la muestra está en 4.° o 5.° semestre. Este sesgo hay que tenerlo presente al leer todo lo que sigue.</aside>
+</section>
+
+<!-- =================================================================== 14 -->
+<section class="slide">
+  <div class="kicker">Resultados · Frecuencia <span class="crit">Objetivo 2</span></div>
+  <h2>Casi 2 de cada 3 encuestados capan clase al menos una vez al mes</h2>
+  <div class="split-r">
+    <div class="stack center">
+      <div class="hero-num reveal">64<small>%</small></div>
+      <p class="reveal" style="font-size:22px"><strong>36 de 56</strong> faltan voluntariamente <strong>al menos ocasionalmente</strong>.</p>
+      <p class="reveal">La mitad lo hace <strong>1 o 2 veces al mes</strong>. Solo 8 personas (14 %) faltan cada semana.</p>
+      <div class="takeaway reveal">El ausentismo voluntario es <strong>ocasional y generalizado</strong>, no un comportamiento extremo de unos pocos.</div>
+    </div>
+    <div class="card chart-card reveal">
+      <div class="chart-title">Durante un semestre, ¿con qué frecuencia capa clase?</div>
+      <div class="chart-box"><canvas id="c-frecuencia"></canvas></div>
+    </div>
+  </div>
+  <aside class="speaker">Dato principal de la presentación. Nunca o casi nunca: 20 (36 %). Ocasionalmente: 28 (50 %). Frecuentemente: 7 (12.5 %). Muy frecuentemente: 1.</aside>
+</section>
+
+<!-- =================================================================== 15 -->
+<section class="slide">
+  <div class="kicker">Resultados · Motivos <span class="crit">Objetivo 3</span></div>
+  <h2>El cansancio, no la pereza, es el motivo número uno</h2>
+  <div class="split">
+    <div class="card chart-card reveal">
+      <div class="chart-title">¿Por qué decide no asistir a una clase?</div>
+      <div class="chart-sub">% de los 56 encuestados · selección múltiple (cada persona marcó 2.1 opciones en promedio)</div>
+      <div class="chart-box"><canvas id="c-motivos"></canvas></div>
+    </div>
+    <div class="stack center">
+      <div class="card kpi accent reveal"><div class="num">64<small>%</small></div><div class="lbl">mencionan <strong>cansancio, necesidad de descanso o salud mental</strong></div></div>
+      <div class="card kpi reveal"><div class="num">18<small>%</small></div><div class="lbl">mencionan <strong>ocio o actividades sociales</strong>, el motivo menos citado</div></div>
+      <p class="small reveal">El desinterés por la materia o el docente (32 %) pesa casi lo mismo que la carga académica de otras materias (34 %).</p>
+    </div>
+  </div>
+  <aside class="speaker">Las barras grises son respuestas escritas en “Otros” (salud física y actividades académicas). Como es selección múltiple, los porcentajes suman más de 100 %.</aside>
+</section>
+
+<!-- =================================================================== 16 -->
+<section class="slide">
+  <div class="kicker">Resultados · Cuándo y en qué materias <span class="crit">Objetivo 2</span></div>
+  <h2>La clase de las 7 a. m. y la materia “que se aprende sola”</h2>
+  <div class="grid-2">
+    <div class="card chart-card reveal">
+      <div class="chart-title">¿En qué horario o día tiende a faltar más?</div>
+      <div class="chart-sub">% de 56 · una opción</div>
+      <div class="chart-box"><canvas id="c-horario"></canvas></div>
+    </div>
+    <div class="card chart-card reveal">
+      <div class="chart-title">¿En qué tipo de asignatura es más probable que no asista?</div>
+      <div class="chart-sub">% de 56 · selección múltiple</div>
+      <div class="chart-box"><canvas id="c-asignaturas"></canvas></div>
+    </div>
+  </div>
+  <div class="takeaway reveal">Las <strong>primeras horas (7–9 a. m.)</strong> son el horario más capado (27 %). En las materias, empatan las <strong>electivas</strong>, las que <strong>se pueden aprender con las diapositivas</strong> y las que <strong>no controlan asistencia</strong> (38–39 % cada una).</div>
+  <aside class="speaker">23 % dice que no depende del horario sino de la materia, lo que encaja con la gráfica de la derecha.</aside>
+</section>
+
+<!-- =================================================================== 17 -->
+<section class="slide">
+  <div class="kicker">Resultados · Uso del tiempo <span class="crit">Objetivo 3</span></div>
+  <h2>¿Qué hacen cuando no van? Sobre todo, dormir</h2>
+  <div class="split">
+    <div class="card chart-card reveal">
+      <div class="chart-title">Cuando decide faltar, ¿a qué dedica principalmente ese tiempo?</div>
+      <div class="chart-sub">% de los 56 encuestados · selección múltiple</div>
+      <div class="chart-box"><canvas id="c-actividades"></canvas></div>
+    </div>
+    <div class="stack center">
+      <div class="card kpi accent reveal"><div class="num">59<small>%</small></div><div class="lbl">duermen o descansan</div></div>
+      <div class="card kpi reveal"><div class="num">46<small>%</small></div><div class="lbl">adelantan tareas o estudian para otra materia</div></div>
+      <div class="takeaway reveal small">Coincide con los motivos: <strong>descanso</strong> y <strong>carga académica</strong> explican la mayoría de las ausencias. El entretenimiento queda de último (21 %).</div>
+    </div>
+  </div>
+  <aside class="speaker">Faltar a una clase muchas veces es una forma de recuperar sueño o tiempo para otras materias, no de “ir de fiesta”.</aside>
+</section>
+
+<!-- =================================================================== 18 -->
+<section class="slide">
+  <div class="kicker">Resultados · Impacto percibido <span class="crit">Objetivo 4</span></div>
+  <h2>Nadie cree que capar clase le baje las notas</h2>
+  <div class="grid-2">
+    <div class="card chart-card reveal">
+      <div class="chart-title">¿Cómo impacta la inasistencia su rendimiento?</div>
+      <div class="chart-sub">% de 56 · una opción</div>
+      <div class="chart-box"><canvas id="c-impacto-rend"></canvas></div>
+    </div>
+    <div class="card chart-card reveal">
+      <div class="chart-title">Sensación más frecuente después de faltar</div>
+      <div class="chart-sub">% de 56 · una opción</div>
+      <div class="chart-box"><canvas id="c-impacto-psico"></canvas></div>
+    </div>
+  </div>
+  <div class="takeaway warn reveal"><strong>0 de 56</strong> eligió “me afecta negativamente”. Sin embargo, la emoción más común después de faltar es la <strong>preocupación o culpa</strong> (25 %), por encima del alivio (21 %).</div>
+  <aside class="speaker">Contradicción interesante: dicen que no les afecta, pero sienten culpa. La siguiente diapositiva contrasta esta percepción con el promedio real.</aside>
+</section>
+
+<!-- =================================================================== 19 -->
+<section class="slide">
+  <div class="kicker">Cruce · Frecuencia × promedio <span class="crit">Objetivo 4</span></div>
+  <h2>…pero a mayor frecuencia de ausentismo, menor promedio</h2>
+  <div class="split">
+    <div class="card chart-card reveal">
+      <div class="chart-title">Promedio acumulado según la frecuencia con que capa clase</div>
+      <div class="chart-sub">Cada punto es un estudiante (n = 48 con promedio) · la línea es la media del grupo</div>
+      <div class="chart-box"><canvas id="c-gpa"></canvas></div>
+    </div>
+    <div class="stack center">
+      <div class="card kpi accent reveal"><div class="num">4.26 → 3.90</div><div class="lbl">media de quienes <strong>nunca o casi nunca</strong> faltan frente a quienes faltan <strong>frecuentemente</strong> (1–2 veces por semana)</div></div>
+      <div class="card kpi reveal"><div class="num">ρ = −0.35</div><div class="lbl">correlación de Spearman, <strong>p = 0.016</strong> (prueba de permutación)</div></div>
+      <p class="small reveal">Es una relación <strong>moderada y significativa</strong> en la muestra. Es una correlación, no una causa, y el grupo de “muy frecuentemente” tiene una sola persona.</p>
+    </div>
+  </div>
+  <aside class="speaker">Hallazgo central: la percepción (no me afecta) contrasta con el dato (el promedio baja). La literatura también encuentra relación entre asistencia y notas (Credé et al., 2010). No implica causalidad: puede haber otras variables.</aside>
+</section>
+
+<!-- =================================================================== 20 -->
+<section class="slide">
+  <div class="kicker">Cruce · Frecuencia × impacto percibido <span class="crit">Objetivo 4</span></div>
+  <h2>Quien más falta tampoco reconoce un impacto negativo</h2>
+  <div class="split">
+    <div class="card chart-card reveal">
+      <div class="chart-title">Impacto percibido en el rendimiento, por frecuencia de ausentismo</div>
+      <div class="chart-sub">% dentro de cada grupo · “Frecuentemente” y “Muy frecuentemente” se agrupan (n = 8)</div>
+      <div class="chart-box"><canvas id="c-cruce"></canvas></div>
+    </div>
+    <div class="stack center">
+      <p class="reveal">Entre quienes faltan <strong>ocasionalmente</strong>, el <strong class="hl">54 %</strong> dice que le afecta levemente pero lo compensa estudiando solo.</p>
+      <p class="reveal">Entre quienes faltan <strong>cada semana</strong>, 7 de 8 dicen que no les afecta o que lo compensan, aunque su promedio medio es el más bajo.</p>
+      <div class="takeaway reveal small">La percepción de “lo compenso” podría estar <strong>subestimando</strong> el costo académico de faltar.</div>
+    </div>
+  </div>
+  <aside class="speaker">Las 5 personas que respondieron N/A están todas en el grupo que nunca falta, lo cual es coherente con la instrucción del formulario.</aside>
+</section>
+
+<!-- =================================================================== 21 -->
+<section class="slide">
+  <div class="kicker">Resultados · Qué los hace ir a clase <span class="crit">Objetivo 4</span></div>
+  <h2>Lo que más retiene: que la asistencia cuente… y clases que valgan la pena</h2>
+  <div class="split">
+    <div class="card chart-card reveal">
+      <div class="chart-title">¿Qué factores disminuyen su deseo de faltar a clase?</div>
+      <div class="chart-sub">% de los 56 encuestados · selección múltiple (2.9 opciones por persona en promedio)</div>
+      <div class="chart-box"><canvas id="c-factores"></canvas></div>
+    </div>
+    <div class="stack center">
+      <div class="card kpi accent reveal"><div class="num">66<small>%</small></div><div class="lbl">asistencia obligatoria que afecte la nota</div></div>
+      <div class="card kpi reveal"><div class="num">54<small>%</small></div><div class="lbl">clases dinámicas que aportan algo que no está en los libros</div></div>
+      <p class="small reveal">El <strong>costo de la matrícula</strong> (30 %) motiva menos que un <strong>profesor amable</strong> (43 %).</p>
+    </div>
+  </div>
+  <aside class="speaker">Hay dos tipos de palancas: el control (asistencia y quices) y la calidad (clases dinámicas, profesor amable). Ambas importan.</aside>
+</section>
+
+<!-- =================================================================== 22 -->
+<section class="slide">
+  <div class="kicker">Resultados · Material virtual <span class="crit">Objetivo 4</span></div>
+  <h2>Subir las diapositivas no vacía el salón (para la mayoría)</h2>
+  <div class="split">
+    <div class="card chart-card reveal">
+      <div class="chart-title">Tener el material en la plataforma virtual hace que su probabilidad de faltar…</div>
+      <div class="chart-sub">Escala 1–5 · número de personas</div>
+      <div class="chart-box"><canvas id="c-material"></canvas></div>
+    </div>
+    <div class="stack center">
+      <div class="card kpi accent reveal"><div class="num">57<small>%</small></div><div class="lbl">eligió 3: el material virtual <strong>no cambia</strong> su decisión</div></div>
+      <div class="card kpi reveal"><div class="num">3.04</div><div class="lbl">media de la escala: prácticamente neutral</div></div>
+      <p class="small reveal">Los extremos se compensan: 10 dicen que el material los hace faltar <strong>menos</strong> y 14 que los hace faltar <strong>más</strong>.</p>
+    </div>
+  </div>
+  <aside class="speaker">Aunque el 39 % dice que capa materias que se aprenden solas con diapositivas, tener el material disponible no aumenta de forma general la probabilidad de faltar.</aside>
+</section>
+
+<!-- =================================================================== 23 -->
+<section class="slide">
+  <div class="kicker">Conclusiones</div>
+  <h2>Respuesta a la pregunta problema</h2>
+  <div class="concl">
+    <div class="c reveal"><div class="big">64%</div><p><strong>Frecuencia:</strong> capar clase es común pero ocasional; la mayoría lo hace 1 o 2 veces al mes.</p></div>
+    <div class="c reveal"><div class="big">64%</div><p><strong>Motivo:</strong> el cansancio y la salud mental superan con amplitud al ocio. Ese tiempo se usa para dormir o estudiar otras materias.</p></div>
+    <div class="c reveal"><div class="big o">0</div><p><strong>Percepción:</strong> nadie dice que faltar le afecte negativamente, aunque la emoción más común después es la culpa.</p></div>
+    <div class="c reveal"><div class="big o">−0.35</div><p><strong>Dato:</strong> a mayor frecuencia de ausentismo, menor promedio (correlación moderada y significativa en la muestra).</p></div>
+    <div class="c reveal"><div class="big">7 a.m.</div><p><strong>Cuándo:</strong> las primeras horas, las electivas y las clases que se pueden aprender solo con las diapositivas.</p></div>
+    <div class="c reveal"><div class="big">66%</div><p><strong>Qué funciona:</strong> que la asistencia cuente en la nota y que las clases aporten valor propio.</p></div>
+  </div>
+  <aside class="speaker">Cerrar respondiendo la pregunta en sus tres partes: frecuencia, motivos y percepción del impacto.</aside>
+</section>
+
+<!-- =================================================================== 24 -->
+<section class="slide">
+  <div class="kicker">Limitaciones y recomendaciones</div>
+  <h2>Lo que hay que tener en cuenta y lo que haríamos distinto</h2>
+  <div class="grid-2" style="align-items:start">
+    <div class="card accent-2 reveal">
+      <h3>Limitaciones</h3>
+      <ul class="clean">
+        <li><p><strong>Muestra no probabilística</strong> de 56 personas: no se puede generalizar a la universidad.</p></li>
+        <li><p><strong>Sesgo de cobertura:</strong> 55 % es de Ingeniería y 5 facultades no tienen respuestas.</p></li>
+        <li><p><strong>Autorreporte:</strong> puede haber deseabilidad social, tanto en la frecuencia como en el promedio.</p></li>
+        <li><p>8 personas no reportaron su promedio.</p></li>
+      </ul>
+    </div>
+    <div class="card accent reveal">
+      <h3>Recomendaciones</h3>
+      <ul class="clean">
+        <li><p>Pedir a Registro un <strong>listado oficial</strong> para hacer un muestreo estratificado por facultad.</p></li>
+        <li><p>Aspirar a <strong>n ≈ 385</strong> para tener ±5 % de error.</p></li>
+        <li><p>Agregar <strong>validación de respuesta</strong> en Forms: rango del promedio, “Otros” no vacío y doble programa distinto del programa base.</p></li>
+        <li><p>Hacer una <strong>prueba piloto</strong> antes de lanzar la encuesta.</p></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="speaker">Mostrar autocrítica: cada recomendación viene de un problema real que encontramos.</aside>
+</section>
+
+<!-- =================================================================== 25 -->
+<section class="slide">
+  <div class="kicker">Bibliografía <span class="crit">Criterio 10 · 6 %</span></div>
+  <h2>Referencias (APA 7.ª edición)</h2>
+  <ul class="refs reveal">
+    <li>Credé, M., Roch, S. G., &amp; Kieszczynka, U. M. (2010). Class attendance in college: A meta-analytic review of the relationship of class attendance with grades and student characteristics. <em>Review of Educational Research, 80</em>(2), 272–295. https://doi.org/10.3102/0034654310362998</li>
+    <li>Romer, D. (1993). Do students go to class? Should they? <em>Journal of Economic Perspectives, 7</em>(3), 167–174. https://doi.org/10.1257/jep.7.3.167</li>
+    <li><span class="todo">[COMPLETAR: mínimo 8 fuentes académicas, la mayoría de los últimos 10 años: artículos indexados, libros de metodología (p. ej. Hernández-Sampieri), informes oficiales (MEN, SPADIES, DANE)]</span></li>
+  </ul>
+  <aside class="speaker">Verificar que todas las referencias del documento escrito estén aquí y en formato APA 7.</aside>
+</section>
+
+<!-- =================================================================== 26 -->
+<section class="slide cover">
+  <div class="eyebrow">Gracias</div>
+  <h1>¿Preguntas?</h1>
+  <p class="sub">Código, base limpia, codebook y gráficas en el repositorio del proyecto.</p>
+  <div class="meta">
+    <div>Repositorio<b><span class="todo">[github.com/usuario/repositorio]</span></b></div>
+    <div>Análisis<b>analisis/analisis.py</b></div>
+    <div>Datos<b>data/encuesta_limpia.csv</b></div>
+  </div>
+</section>
+
+  <div class="progress" id="progress"></div>
+  <div class="slide-num" id="slideNum"></div>
+</div>
+</div>
+
+<div class="notes" id="notes"><div class="h">Notas del expositor</div><div id="notesText"></div></div>
+
+<div class="controls">
+  <button id="btnPrev" title="Anterior (←)" aria-label="Anterior">‹</button>
+  <button id="btnNext" title="Siguiente (→)" aria-label="Siguiente">›</button>
+  <button id="btnNotes" title="Notas (N)" aria-label="Notas">✎</button>
+  <button id="btnTheme" title="Tema (T)" aria-label="Cambiar tema">◐</button>
+  <button id="btnFull" title="Pantalla completa (F)" aria-label="Pantalla completa">⛶</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/slides.js"></script>
+</body>
+</html>

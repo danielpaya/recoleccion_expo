@@ -1,0 +1,18 @@
+﻿variable,etiqueta,pregunta_origen,tipo,escala,valores_codigos,codigo_faltante,regla_validacion
+id,Identificador de respuesta,—,Numérica,Nominal,1…n,—,"Único, no vacío"
+fecha,Marca temporal,Marca temporal (Forms),Fecha,Intervalo,AAAA-MM-DD HH:MM,—,Dentro del periodo de recolección
+consentimiento,Acepta aviso de privacidad,Aviso de privacidad,Categórica,Nominal,1 = Acepta,—,Obligatoria; si 0 se descarta
+semestre,Semestre con mayor carga,¿En qué semestre se encuentra la mayoría de su carga académica?,Numérica discreta,Ordinal,1–10 (10 = 10 o más),—,Entero entre 1 y 10
+facultad,Facultad,¿A qué facultad pertenece?,Categórica,Nominal,12 facultades (ver formulario),—,Obligatoria
+programa_base,Programa base,¿Cuál es su programa base?,Categórica,Nominal,Lista por facultad,—,Debe pertenecer a la facultad elegida
+doble_programa,Segundo programa,Si hace doble programa…,Categórica,Nominal,Lista de pregrados,Vacío = no aplica,≠ programa_base
+promedio,Promedio acumulado,¿Cuál es su promedio acumulado?,Numérica continua,Razón,0.00–5.00,Vacío (NA),Punto decimal; 0 < x < 5; descartar valores no creíbles
+frecuencia,Frecuencia de ausentismo,¿Con qué frecuencia falta a clase voluntariamente?,Categórica,Ordinal,1 Nunca · 2 Ocasional · 3 Frecuente · 4 Muy frecuente,—,"Obligatoria, una opción"
+"mot_1…mot_5, mot_otro",Motivo de ausencia,¿Cuál es el motivo principal…?,Dicotómica (multirrespuesta),Nominal,0 = No marcó · 1 = Marcó,N/A = 0 en todas,'Otros' no vacío; recodificar si encaja en una categoría
+horario,Horario en que más falta,¿En qué tipo de horario o día…?,Categórica,Nominal,5 opciones + N/A,N/A,Una opción
+asig_1…asig_5,Tipo de asignatura,¿En qué tipo de asignatura…?,Dicotómica (multirrespuesta),Nominal,0 / 1,N/A = 0 en todas,N/A no debe combinarse con otras
+"act_1…act_5, act_otro",Uso del tiempo,"Cuando decide faltar, ¿a qué actividad…?",Dicotómica (multirrespuesta),Nominal,0 / 1,N/A = 0 en todas,'Otros' no vacío
+impacto_rend,Impacto en el rendimiento,¿Cómo impacta la inasistencia su rendimiento?,Categórica,Nominal,4 opciones + N/A,N/A,Una opción
+impacto_psico,Impacto psicológico,¿Qué impacto psicológico…?,Categórica,Nominal,8 opciones + N/A,N/A,Una opción
+"fac_1…fac_7, fac_otro",Factores que disminuyen el deseo de faltar,¿Cuál de los siguientes factores disminuye…?,Dicotómica (multirrespuesta),Nominal,0 / 1,—,'Otros' no vacío
+material_virtual,Efecto del material virtual,La disponibilidad del material didáctico… hace que su probabilidad de faltar:,Numérica discreta,Ordinal (Likert),1 Disminuye mucho … 3 Sin efecto … 5 Aumenta mucho,—,Entero 1–5
