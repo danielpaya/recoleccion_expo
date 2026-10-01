@@ -8,10 +8,13 @@ window.DATA = {
   "muestreo": {
     "z": 1.96,
     "p": 0.5,
-    "N": 13913,
+    "N": 9665,
+    "N_posgrado_excluido": 4248,
     "error_logrado": 13.1,
+    "error_logrado_exacto": 13.058,
     "n_infinita": 385,
-    "n_para_5": 374
+    "n_para_5_exacto": 369.51,
+    "n_para_5": 370
   },
   "semestre": {
     "labels": [

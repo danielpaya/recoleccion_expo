@@ -31,9 +31,11 @@ SALIDA_DATA = RAIZ / "data"
 SALIDA_JS = RAIZ / "js" / "data.js"
 SALIDA_PNG = RAIZ / "graficas"
 
-# Población: estudiantes matriculados en la U. de La Sabana, periodo 2026-1
-# (9 665 pregrado + 4 248 posgrado). Fuente: unisabana.edu.co/la-sabana-en-cifras
-POBLACION_N = 13913
+# Población objetivo: estudiantes de PREGRADO matriculados en la U. de La Sabana,
+# periodo 2026-1. Los 4 248 de posgrado quedan fuera (la encuesta se dirigió solo a pregrado).
+# Fuente: Universidad de La Sabana (2026), La Sabana en cifras (unisabana.edu.co/la-sabana-en-cifras)
+POBLACION_N = 9665
+POSGRADO_EXCLUIDOS = 4248
 
 # --------------------------------------------------------------------------
 # Opciones del instrumento (texto exacto del formulario)
@@ -262,18 +264,22 @@ def main():
 
     mv = limpio["material_virtual"].value_counts().reindex([1, 2, 3, 4, 5], fill_value=0)
 
-    # Margen de error con n=56 (p=0.5, 95 %) con corrección por población finita
-    z, N = 1.96, POBLACION_N
+    # Tamaño de muestra para ±5 %: n = N·Z²·p·q / (e²(N−1) + Z²·p·q), con Z=1.96, p=q=0.5.
+    # Margen de error con n=56, con corrección por población finita.
+    z, p, q, e_obj, N = 1.96, 0.5, 0.5, 0.05, POBLACION_N
+    n_0 = z**2 * p * q / e_obj**2
+    n_5_exacto = N * z**2 * p * q / (e_obj**2 * (N - 1) + z**2 * p * q)
+    n_5 = int(np.ceil(n_5_exacto))
     fpc = np.sqrt((N - n) / (N - 1))
-    e = z * np.sqrt(0.25 / n) * fpc
-    n_0 = z**2 * 0.25 / 0.05**2
-    n_5 = int(np.ceil(N * n_0 / (n_0 + N - 1)))
+    e = z * np.sqrt(p * q / n) * fpc
 
     data = {
         "n": n,
         "fechas": {"inicio": limpio["fecha"].min()[:10], "fin": limpio["fecha"].max()[:10]},
-        "muestreo": {"z": z, "p": 0.5, "N": N, "error_logrado": round(100 * e, 1),
-                     "n_infinita": int(np.ceil(n_0)), "n_para_5": n_5},
+        "muestreo": {"z": z, "p": p, "N": N, "N_posgrado_excluido": POSGRADO_EXCLUIDOS,
+                     "error_logrado": round(100 * e, 1), "error_logrado_exacto": round(100 * e, 3),
+                     "n_infinita": int(np.ceil(n_0)), "n_para_5_exacto": round(n_5_exacto, 2),
+                     "n_para_5": n_5},
         "semestre": {"labels": [f"{s}.°" for s in sem.index], "n": sem.tolist()},
         "facultad": {"labels": fac.index.tolist(), "n": fac.tolist(),
                      "pct": [round(100 * v / n, 1) for v in fac]},
@@ -306,40 +312,86 @@ def main():
         encoding="utf-8",
     )
 
-    escribir_codebook()
+    codebook = escribir_codebook(c)
+    # El codebook debe tener exactamente las mismas variables, y en el mismo orden, que la base limpia
+    assert codebook["variable"].tolist() == limpio.columns.tolist(), "codebook y encuesta_limpia no coinciden"
     graficas_png(data)
 
     print(f"Respuestas: {n}")
     print(f"Capan al menos ocasionalmente: {capan} ({100 * capan / n:.1f} %)")
     print(f"Promedio acumulado: media {prom.mean():.2f} (n={len(prom)})")
     print(f"Spearman frecuencia vs promedio: rho={rho}, p={p_rho}")
-    print(f"Margen de error con n={n}: ±{100 * e:.1f} %  |  n para ±5 %: {n_5}")
+    print(f"Población N={N} (pregrado)  |  n para ±5 %: {n_5_exacto:.2f} -> {n_5}")
+    print(f"Margen de error con n={n}: ±{100 * e:.3f} % (≈ ±{100 * e:.1f} %)")
+    print(f"Codebook: {len(codebook)} variables (= columnas de encuesta_limpia.csv)")
     print(f"Escrito: {SALIDA_JS.relative_to(RAIZ)}, data/, graficas/")
 
 
-def escribir_codebook():
+def escribir_codebook(c: list[str]) -> pd.DataFrame:
+    """Una fila por columna de data/encuesta_limpia.csv. El texto de las preguntas se toma
+    de los encabezados del CSV de Forms y el de las opciones, de las constantes de arriba
+    (texto exacto del formulario, que es el que aparece en las celdas del CSV)."""
+    def preg(i: int) -> str:
+        return " ".join(str(c[i]).split())
+
+    OBLIG = "No admite faltantes (campo obligatorio)"
+    NA_COD = "'N/A' = marcó «N/A: No Aplica» (no capa clase); no admite vacíos (campo obligatorio)"
+
+    def opciones_simples(ops: dict[str, str]) -> str:
+        return " · ".join(f"'{corta}' = «{larga}»" for larga, corta in ops.items()) + " · 'N/A' = «N/A: No Aplica»"
+
     filas = [
-        ("id", "Identificador de respuesta", "—", "Numérica", "Nominal", "1…n", "—", "Único, no vacío"),
-        ("fecha", "Marca temporal", "Marca temporal (Forms)", "Fecha", "Intervalo", "AAAA-MM-DD HH:MM", "—", "Dentro del periodo de recolección"),
-        ("consentimiento", "Acepta aviso de privacidad", "Aviso de privacidad", "Categórica", "Nominal", "1 = Acepta", "—", "Obligatoria; si 0 se descarta"),
-        ("semestre", "Semestre con mayor carga", "¿En qué semestre se encuentra la mayoría de su carga académica?", "Numérica discreta", "Ordinal", "1–10 (10 = 10 o más)", "—", "Entero entre 1 y 10"),
-        ("facultad", "Facultad", "¿A qué facultad pertenece?", "Categórica", "Nominal", "12 facultades (ver formulario)", "—", "Obligatoria"),
-        ("programa_base", "Programa base", "¿Cuál es su programa base?", "Categórica", "Nominal", "Lista por facultad", "—", "Debe pertenecer a la facultad elegida"),
-        ("doble_programa", "Segundo programa", "Si hace doble programa…", "Categórica", "Nominal", "Lista de pregrados", "Vacío = no aplica", "≠ programa_base"),
-        ("promedio", "Promedio acumulado", "¿Cuál es su promedio acumulado?", "Numérica continua", "Razón", "0.00–5.00", "Vacío (NA)", "Punto decimal; 0 < x < 5; descartar valores no creíbles"),
-        ("frecuencia", "Frecuencia de ausentismo", "¿Con qué frecuencia falta a clase voluntariamente?", "Categórica", "Ordinal", "1 Nunca · 2 Ocasional · 3 Frecuente · 4 Muy frecuente", "—", "Obligatoria, una opción"),
-        ("mot_1…mot_5, mot_otro", "Motivo de ausencia", "¿Cuál es el motivo principal…?", "Dicotómica (multirrespuesta)", "Nominal", "0 = No marcó · 1 = Marcó", "N/A = 0 en todas", "'Otros' no vacío; recodificar si encaja en una categoría"),
-        ("horario", "Horario en que más falta", "¿En qué tipo de horario o día…?", "Categórica", "Nominal", "5 opciones + N/A", "N/A", "Una opción"),
-        ("asig_1…asig_5", "Tipo de asignatura", "¿En qué tipo de asignatura…?", "Dicotómica (multirrespuesta)", "Nominal", "0 / 1", "N/A = 0 en todas", "N/A no debe combinarse con otras"),
-        ("act_1…act_5, act_otro", "Uso del tiempo", "Cuando decide faltar, ¿a qué actividad…?", "Dicotómica (multirrespuesta)", "Nominal", "0 / 1", "N/A = 0 en todas", "'Otros' no vacío"),
-        ("impacto_rend", "Impacto en el rendimiento", "¿Cómo impacta la inasistencia su rendimiento?", "Categórica", "Nominal", "4 opciones + N/A", "N/A", "Una opción"),
-        ("impacto_psico", "Impacto psicológico", "¿Qué impacto psicológico…?", "Categórica", "Nominal", "8 opciones + N/A", "N/A", "Una opción"),
-        ("fac_1…fac_7, fac_otro", "Factores que disminuyen el deseo de faltar", "¿Cuál de los siguientes factores disminuye…?", "Dicotómica (multirrespuesta)", "Nominal", "0 / 1", "—", "'Otros' no vacío"),
-        ("material_virtual", "Efecto del material virtual", "La disponibilidad del material didáctico… hace que su probabilidad de faltar:", "Numérica discreta", "Ordinal (Likert)", "1 Disminuye mucho … 3 Sin efecto … 5 Aumenta mucho", "—", "Entero 1–5"),
+        ("id", "Identificador de respuesta", "— (generado por el script)", "Numérica", "Nominal", "1…n",
+         "No admite faltantes (lo genera el script)", "Único, no vacío"),
+        ("fecha", "Marca temporal", preg(0), "Fecha", "Intervalo", "AAAA-MM-DD HH:MM",
+         "No admite faltantes (Forms la registra siempre)", "Dentro del periodo de recolección"),
+        ("consentimiento", "Acepta aviso de privacidad", preg(11), "Categórica", "Nominal", "1 = Acepta",
+         OBLIG, "Obligatoria; si 0 se descarta"),
+        ("semestre", "Semestre con mayor carga", preg(1), "Numérica discreta", "Ordinal", "1–10 (10 = 10 o más)",
+         OBLIG, "Entero entre 1 y 10"),
+        ("facultad", "Facultad", preg(12), "Categórica", "Nominal",
+         " · ".join(f"'{corta}' = «{larga}»" for larga, corta in FACULTAD_CORTA.items()),
+         OBLIG, "Una de las 12 facultades"),
+        ("programa_base", "Programa base", preg(16) + " (12 columnas de Forms, una por facultad, unidas en una)",
+         "Categórica", "Nominal", "Lista por facultad (texto del formulario)",
+         OBLIG, "Debe pertenecer a la facultad elegida"),
+        ("doble_programa", "Segundo programa", preg(14), "Categórica", "Nominal", "Lista de pregrados",
+         "NA (vacío) = no hace doble programa", "≠ programa_base"),
+        ("promedio", "Promedio acumulado", preg(13), "Numérica continua", "Razón", "0.00–5.00",
+         "NA (vacío) = no respondió (pregunta opcional) o valor anulado en la limpieza",
+         "Punto decimal; 0 < x < 5; descartar valores no creíbles"),
+        ("frecuencia", "Frecuencia de ausentismo", preg(2), "Categórica", "Ordinal",
+         " · ".join(f"{i} = «{t}»" for i, t in enumerate(FRECUENCIA, start=1)),
+         OBLIG, "Obligatoria, una opción"),
+        ("horario", "Horario en que más falta", preg(4), "Categórica", "Nominal", opciones_simples(HORARIOS),
+         NA_COD, "Una opción"),
+        ("impacto_rend", "Impacto en el rendimiento", preg(7), "Categórica", "Nominal", opciones_simples(IMPACTO_REND),
+         NA_COD, "Una opción"),
+        ("impacto_psico", "Impacto psicológico", preg(8), "Categórica", "Nominal", opciones_simples(IMPACTO_PSICO),
+         NA_COD, "Una opción"),
+        ("material_virtual", "Efecto del material virtual", preg(10), "Numérica discreta", "Ordinal (Likert)",
+         "1 Disminuye mucho … 3 Sin efecto … 5 Aumenta mucho", OBLIG, "Entero 1–5"),
     ]
-    pd.DataFrame(filas, columns=["variable", "etiqueta", "pregunta_origen", "tipo", "escala",
-                                 "valores_codigos", "codigo_faltante", "regla_validacion"]
-                 ).to_csv(SALIDA_DATA / "codebook.csv", index=False, encoding="utf-8-sig")
+    # Selección múltiple: una variable 0/1 por opción + una variable de texto para "Otros"
+    for prefijo, i_col, ops, tema, tiene_na in [("mot", 3, MOTIVOS, "Motivo", True),
+                                                ("asig", 5, ASIGNATURAS, "Tipo de asignatura", True),
+                                                ("act", 6, ACTIVIDADES, "Uso del tiempo", True),
+                                                ("fac", 9, FACTORES, "Factor que disminuye el deseo de faltar", False)]:
+        faltante = ("0 (N/A): quien marcó «N/A: No Aplica» queda con 0 en todas las opciones" if tiene_na
+                    else "No admite faltantes (campo obligatorio); 0 = no marcó la opción")
+        for k, (larga, corta) in enumerate(ops.items(), start=1):
+            filas.append((f"{prefijo}_{k}", f"{tema}: {corta}", preg(i_col),
+                          "Dicotómica (multirrespuesta)", "Nominal", f"1 = marcó «{larga}» · 0 = no la marcó",
+                          faltante, "0 o 1" + ("; N/A no debe combinarse con otras opciones" if tiene_na else "")))
+        filas.append((f"{prefijo}_otro", f"{tema}: texto de «Otros»", preg(i_col), "Texto abierto", "Nominal",
+                      "Texto libre escrito en «Otros» (varias entradas separadas por '; ')",
+                      "Vacío = no escribió nada en «Otros»",
+                      "No vacío ni solo espacios; recodificar si encaja en una categoría existente"))
+
+    codebook = pd.DataFrame(filas, columns=["variable", "etiqueta", "pregunta_origen", "tipo", "escala",
+                                            "valores_codigos", "codigo_faltante", "regla_validacion"])
+    codebook.to_csv(SALIDA_DATA / "codebook.csv", index=False, encoding="utf-8-sig")
+    return codebook
 
 
 def graficas_png(data: dict):
